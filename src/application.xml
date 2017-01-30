@@ -1,0 +1,22 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+      xmlns:context="http://www.springframework.org/schema/context"
+      xmlns:c="http://www.springframework.org/schema/c"
+      xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd"
+>
+	<!-- add your bean definitions here! -->
+	<bean id="paymentServicePayPal" class="npu.services.PaymentServicePayPal" />
+	<bean id="paymentServiceWellsFargo" class="npu.services.PaymentServiceWellsFargo" />
+	<bean id="tuitionCalculatorServiceNU" class="npu.services.TuitionCalculatorServiceNU" />
+	<bean id="tuitionCalculatorServiceOSU" class="npu.services.TuitionCalculatorServiceOSU" />
+	
+	<bean id="studentCheckoutService" class="npu.services.StudentCheckoutService">
+			<property name="paymentService" ref="paymentServicePayPal" />
+<!-- 			<property name="tuitionCalculatorService" ref="tuitionCalculatorServiceOSU" /> -->
+<!-- 			<property name="paymentService" ref="paymentServiceWellsFargo" /> -->
+			<property name="tuitionCalculatorService" ref="tuitionCalculatorServiceNU" />
+	</bean>
+
+</beans>
